@@ -1,0 +1,37 @@
+:root {
+    --orange: #f4d18c;
+    --grey: #25292a;
+    --crimson: #e66063;
+}
+
+/* main page */
+.test {
+    min-height: calc(100vh - 65px);
+}
+
+.main-img {
+    height: 100%;
+}
+
+.card:hover {
+    color: black;
+    background-color: blue;
+}
+
+/* auth */
+.max {
+    min-height: calc(100vh);
+}
+
+.auth {
+    background-image: url('./img/peakpx.jpg');
+    /* background-position: cover; */
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+/* category */
+.img {
+    height: 150px;
+}
