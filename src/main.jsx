@@ -6,6 +6,7 @@ import { ChakraProvider } from '@chakra-ui/react'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Auth from './pages/Auth.jsx'
 import Category from './pages/Category.jsx'
+import Admin from './admin/Admin.jsx'
 
 const router = createBrowserRouter([
   {
@@ -18,8 +19,12 @@ const router = createBrowserRouter([
     element: <Auth />,
   },
   {
-    path: "/category",
+    path: "/:brand",
     element: <Category />,
+  },
+  {
+    path: "/admin",
+    element: <Admin />,
   },
 ])
 

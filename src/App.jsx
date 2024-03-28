@@ -20,13 +20,14 @@ import woman2 from './img/5.jpg'
 import uni from './img/7.jpg'
 import man from './img/8.jpg'
 import Footer from './components/Footer'
+import { Link } from 'react-router-dom'
 
 function App() {
   const mainCard = [
-    { img: adidas },
-    { img: nike },
-    { img: puma },
-    { img: vans },
+    { img: adidas, link: '/adidas' },
+    { img: nike, link: '/nike' },
+    { img: puma, link: '/puma' },
+    { img: vans, link: '/vans' },
   ]
 
   const rare = [
@@ -64,22 +65,24 @@ function App() {
                 <Box bg="white" maxW="320px" borderWidth="1px" borderRadius="lg" overflow="hidden" boxShadow="md" p={4} position="relative" _hover={{ '.button': { opacity: 1 } }} zIndex={0}>
                   {/* <Text mt={2}>Content for Card 1</Text> */}
                   <Image src={card.img} />
-                  <Button
-                    className="button "
-                    position="absolute"
-                    bottom={'0px'}
-                    left="50%"
-                    transform="translateX(-50%)"
-                    opacity={0}
-                    transition="opacity 0.5s"
-                    zIndex={1} //still not able to hover outside the box
-                    bg={'#e66063'}
-                    color={'white'}
-                    _hover={{ bg: '#25292a' }}
-                  >
-                    Shop Now
-                    <ChevronRightIcon mt={'1'} />
-                  </Button>
+                  <Link to={card.link}>
+                    <Button
+                      className="button "
+                      position="absolute"
+                      bottom={'0px'}
+                      left="50%"
+                      transform="translateX(-50%)"
+                      opacity={0}
+                      transition="opacity 0.5s"
+                      zIndex={1} //still not able to hover outside the box
+                      bg={'#e66063'}
+                      color={'white'}
+                      _hover={{ bg: '#25292a' }}
+                    >
+                      Shop Now
+                      <ChevronRightIcon mt={'1'} />
+                    </Button>
+                  </Link>
                 </Box>
               ))}
 

@@ -27,6 +27,7 @@ export default function Navbar() {
                         {/* <Box>Home</Box> */}
                         <Link to={'/category'}>Category</Link>
                         <Box>Contact Us</Box>
+                        {/* <Avatar bg='teal.500' /> */}
                         <Box>
                             <Link to="/auth">Login | Signup</Link>
                         </Box>
