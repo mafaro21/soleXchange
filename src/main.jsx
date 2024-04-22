@@ -7,6 +7,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Auth from './pages/Auth.jsx'
 import Category from './pages/Category.jsx'
 import Admin from './admin/Admin.jsx'
+import Product from './admin/Product.jsx'
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
   {
     path: "/admin",
     element: <Admin />,
+  },
+  {
+    path: "/admin/product",
+    element: <Product />,
   },
 ])
 

@@ -1,8 +1,10 @@
 import React from 'react'
 import '../App.css'
-import { Box, Flex, HStack, MenuButton, Spacer, Text } from '@chakra-ui/react'
+import { Box, Flex, HStack, Image, MenuButton, Spacer, Text } from '@chakra-ui/react'
 import { HamburgerIcon } from '@chakra-ui/icons'
 import { Link } from 'react-router-dom'
+import logo from '../img/Asset 4.png'
+import logo1 from '../img/Asset 6.png'
 
 export default function Navbar() {
     return (
@@ -21,7 +23,17 @@ export default function Navbar() {
             >
                 <Flex h={'65px'} alignItems="center" justifyContent="space-between">
                     <HamburgerIcon />
-                    <Link to={'/'}><Text ml="6" as='b' fontSize='2xl'>soleXchange</Text></Link>
+                    <Link to={'/'}>
+                        <Image src={logo1} height={39} ml={3} />
+                        {/* <Image src={logo} height={50} ml={3} /> */}
+                    </Link>
+
+                    <Spacer />
+
+                    {/* <Link to={'/'} >
+                        <Image src={logo} height={50} ml={3} />
+                    </Link> */}
+
                     <Spacer />
                     <HStack spacing={10}>
                         {/* <Box>Home</Box> */}

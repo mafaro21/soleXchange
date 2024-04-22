@@ -1,0 +1,10 @@
+create proper tables
+redux
+encrypt pass
+contains for search
+
+--done--
+login/signup
+user table
+added nodemon
+send data 

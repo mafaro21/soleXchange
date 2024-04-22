@@ -2,7 +2,7 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import { Box, Center, Container, Flex, HStack, Image, MenuButton, Spacer, Text, Button } from '@chakra-ui/react'
+import { Box, Center, Container, Flex, HStack, Image, MenuButton, Spacer, Text, Button, SimpleGrid } from '@chakra-ui/react'
 import { HamburgerIcon, ChevronRightIcon } from '@chakra-ui/icons'
 import Navbar from './components/Navbar'
 import img from './img/tennis.webp'
@@ -59,10 +59,10 @@ function App() {
 
       <Box bg='white' p='9'>
         <Container maxW='container.2xl'>
-          <Box bg='' style={{ marginTop: '-109px' }}>
-            <Flex justifyContent="space-around" p={4}>
+          <Box bg='' style={{ marginTop: '-109px' }} >
+            <Flex justifyContent="space-between" p={4}  >
               {mainCard.map((card, index) => (
-                <Box bg="white" maxW="320px" borderWidth="1px" borderRadius="lg" overflow="hidden" boxShadow="md" p={4} position="relative" _hover={{ '.button': { opacity: 1 } }} zIndex={0}>
+                <Box mr={5} bg="white" maxW="320px" borderWidth="1px" borderRadius="lg" overflow="hidden" boxShadow="md" p={4} position="relative" _hover={{ '.button': { opacity: 1 } }} zIndex={0}>
                   {/* <Text mt={2}>Content for Card 1</Text> */}
                   <Image src={card.img} />
                   <Link to={card.link}>
@@ -91,9 +91,17 @@ function App() {
 
             <Box mt='10'>
               <Text fontSize='3xl'>New & Rare</Text>
-              <Flex justifyContent="space-around" p={6}>
+              <Flex justifyContent="space-between" p={6} >
                 {rare.map((rare, index) => (
-                  <Box bg="white" maxW="300px" borderWidth="1px" borderRadius="lg" overflow="hidden" boxShadow="md" p={4}>
+                  <Box
+                    bg="white"
+                    maxW="300px"
+                    borderWidth="1px"
+                    borderRadius="lg"
+                    overflow="hidden"
+                    boxShadow="md"
+                    p={4}
+                    mr={5}>
                     <Image src={rare.img} />
                     <Text mt={5} as={'b'}>{rare.name}</Text>
                     <Text mt={1}>${rare.price}</Text>
@@ -102,6 +110,21 @@ function App() {
                 ))}
               </Flex>
             </Box>
+
+            {/* {rare.map((rare, index) => (
+              <Flex justifyContent="center" p={1} >
+                <Box ml={1} bg={''} maxW={'2050px'}>
+                  <SimpleGrid columns={{ base: 2, md: 3, lg: 5 }} spacing={4} p={1}>
+                    <Box maxW="200px" borderWidth="1px" borderRadius="lg" overflow="hidden" boxShadow="md" p={4}>
+                      <Image src={rare.img} />
+                      <Text mt={5} as={'b'}>{rare.name}</Text>
+                      <Text mt={1}>${rare.price}</Text>
+                      <Text mt={1}>{rare.sex}</Text>
+                    </Box>
+                  </SimpleGrid>
+                </Box>
+              </Flex>
+            ))} */}
 
 
           </Box>

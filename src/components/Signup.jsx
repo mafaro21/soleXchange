@@ -35,22 +35,24 @@ export default function Signup() {
         }
 
         if (Validation()) {
-            axios.post('http://localhost:8888/auth/login', loginData)
+            axios.post('http://localhost:8888/auth/signup', loginData)
                 .then((res) => {
                     setResponse(res.data)
+                    // console.log(res.data)
                 })
                 .catch((err) => {
                     setResponse(err.data)
                 })
 
             toast({
-                title: "Logged In!",
-                description: "You have successfully logged in.",
+                title: "Welcome newcomer!",
+                description: "You have successfully created an account.",
                 status: "success",
                 duration: 4000,
                 isClosable: true,
                 position: "top-right",
             });
+            navigate('/')
         }
 
     }

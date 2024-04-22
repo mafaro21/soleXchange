@@ -34,18 +34,42 @@ export default function Login() {
         if (Validation()) {
             axios.post('http://localhost:8888/auth/login', loginData)
                 .then((res) => {
-                    setResponse(res.data)
-                    // toast({
-                    //     title: "Logged In!",
-                    //     description: { response },
-                    //     status: "success",
-                    //     duration: 4000,
-                    //     isClosable: true,
-                    //     position: "top-right",
-                    // });
+                    setResponse(res.data.name)
+                    // console.log(res.data)
+
+                    if (res.data.length === 0) {
+                        toast({
+                            title: "User does not exist",
+                            description: response,
+                            status: "error",
+                            duration: 4000,
+                            isClosable: true,
+                            position: "top-right",
+                        });
+                    } else {
+                        toast({
+                            title: "Logged In!",
+                            description: "Welcome Back!",
+                            status: "success",
+                            duration: 4000,
+                            isClosable: true,
+                            position: "top-right",
+                        });
+                        navigate('/')
+                    }
+
+
                 })
                 .catch((err) => {
                     setResponse(err.data)
+                    toast({
+                        title: "Error",
+                        description: "kk",
+                        status: "error",
+                        duration: 4000,
+                        isClosable: true,
+                        position: "top-right",
+                    });
                 })
         }
     }

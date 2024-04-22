@@ -52,7 +52,7 @@ export default function Category() {
                         <Box flex="1"  >
                             <Box p={4} borderWidth="1px" borderRadius="lg" boxShadow="md" bg="white" >
                                 <Heading size="md" mb={4}>Filters</Heading>
-                                <Stack spacing={4}>
+                                <VStack spacing={6}>
                                     <FormControl>
                                         <FormLabel>Category</FormLabel>
                                         <Checkbox>Clothing</Checkbox>
@@ -77,7 +77,7 @@ export default function Category() {
                                         <Checkbox>Adidas</Checkbox>
                                         {/* Add more brands as needed */}
                                     </FormControl>
-                                </Stack>
+                                </VStack>
                                 <Button mt={4} colorScheme="blue" size="sm">Apply Filters</Button>
                             </Box>
                         </Box>
