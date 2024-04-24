@@ -13,19 +13,27 @@ import {
 import '../App.css'
 import { useNavigate } from "react-router-dom";
 import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux';
+import { setLogin } from '../state/AuthSlice.js'
 
 export default function Login() {
     const [name, setName] = useState('')
     const [password, setPassword] = useState('')
-    const [response, setResponse] = useState('')
+    // const [response, setResponse] = useState('')
     const [errorDiv, setErrorDiv] = useState(false);
     const [errorText, setErrorText] = useState("");
+    const [errorFromDB, setErrorFromDB] = useState(false)
     const navigate = useNavigate()
     const toast = useToast()
+    const dispatch = useDispatch()
+
+    const userName = useSelector((state) => state.auth.name)
 
     const handleSubmit = () => {
         setErrorDiv(false)
+        setErrorFromDB(false)
         setErrorText('')
+
         const loginData = {
             name: name,
             password: password
@@ -34,8 +42,15 @@ export default function Login() {
         if (Validation()) {
             axios.post('http://localhost:8888/auth/login', loginData)
                 .then((res) => {
-                    setResponse(res.data.name)
-                    // console.log(res.data)
+                    // setResponse(res.data.name)
+                    const api = res.data[0].name
+                    // console.log(api)
+                    dispatch(
+                        setLogin({
+                            isLoggedIn: true,
+                            name: api,
+                        })
+                    )
 
                     if (res.data.length === 0) {
                         toast({
@@ -49,22 +64,32 @@ export default function Login() {
                     } else {
                         toast({
                             title: "Logged In!",
-                            description: "Welcome Back!",
+                            description: "Welcome Back! ",
                             status: "success",
                             duration: 4000,
                             isClosable: true,
                             position: "top-right",
                         });
+
+                        // add last login date 
+                        axios.put('http://localhost:8888/auth/login/date')
+                            .then((res) => {
+                                console.log(res.data)
+                            })
+                            .catch((err) => {
+                                console.log(err)
+                            })
                         navigate('/')
                     }
 
 
                 })
                 .catch((err) => {
-                    setResponse(err.data)
+                    console.log(err.data)
+                    setErrorFromDB(true)
                     toast({
                         title: "Error",
-                        description: "kk",
+                        description: "Name or Password is incorrect",
                         status: "error",
                         duration: 4000,
                         isClosable: true,
@@ -106,11 +131,11 @@ export default function Login() {
             <VStack spacing={4} mt='' p='9'>
                 {errorMessage}
                 <FormControl>
-                    <FormLabel>Name </FormLabel>
+                    <FormLabel>Name {userName}</FormLabel>
                     <Input type="name"
                         placeholder="Enter your name"
                         onChange={(e) => setName(e.target.value)}
-                        isInvalid={errorDiv ? 'red' : ''}
+                        isInvalid={errorDiv ? 'red' : '' || errorFromDB == true ? 'red' : ''}
                     />
                 </FormControl>
                 <FormControl>
@@ -118,7 +143,7 @@ export default function Login() {
                     <Input type="password"
                         placeholder="Enter your password"
                         onChange={(e) => setPassword(e.target.value)}
-                        isInvalid={errorDiv ? 'red' : ''}
+                        isInvalid={errorDiv ? 'red' : '' || errorFromDB == true ? 'red' : ''}
                     />
                 </FormControl>
                 <Button bg='#e66063' mt='3' onClick={handleSubmit}>Login</Button>

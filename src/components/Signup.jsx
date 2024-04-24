@@ -11,7 +11,10 @@ import {
     useToast
 } from '@chakra-ui/react'
 import '../App.css'
+import { useDispatch } from 'react-redux';
 import axios from 'axios'
+import { setLogin } from '../state/AuthSlice.js'
+import { useNavigate } from "react-router-dom";
 
 export default function Signup() {
     const [name, setName] = useState('')
@@ -22,6 +25,8 @@ export default function Signup() {
     const [errorText, setErrorText] = useState("");
     const toast = useToast()
     const [response, setResponse] = useState('')
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     const handleSubmit = () => {
         setErrorDiv(false)
@@ -37,22 +42,39 @@ export default function Signup() {
         if (Validation()) {
             axios.post('http://localhost:8888/auth/signup', loginData)
                 .then((res) => {
-                    setResponse(res.data)
+                    // setResponse(res.data)
                     // console.log(res.data)
+                    // const api = res.data[0].name
+                    dispatch(
+                        setLogin({
+                            isLoggedIn: true,
+                            name: name,
+
+                        })
+                    )
+
+                    toast({
+                        title: "Welcome newcomer!",
+                        description: "You have successfully created an account.",
+                        status: "success",
+                        duration: 4000,
+                        isClosable: true,
+                        position: "top-right",
+                    });
+                    navigate('/')
                 })
                 .catch((err) => {
-                    setResponse(err.data)
+                    // setResponse(err.data)
+                    console.log(err)
+                    toast({
+                        title: "Error",
+                        description: "error",
+                        status: "error",
+                        duration: 4000,
+                        isClosable: true,
+                        position: "top-right",
+                    });
                 })
-
-            toast({
-                title: "Welcome newcomer!",
-                description: "You have successfully created an account.",
-                status: "success",
-                duration: 4000,
-                isClosable: true,
-                position: "top-right",
-            });
-            navigate('/')
         }
 
     }

@@ -21,8 +21,14 @@ import uni from './img/7.jpg'
 import man from './img/8.jpg'
 import Footer from './components/Footer'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux';
+
 
 function App() {
+  const userName = useSelector((state) => state.auth.name)
+
+  // console.log(userName)
+
   const mainCard = [
     { img: adidas, link: '/adidas' },
     { img: nike, link: '/nike' },
@@ -47,8 +53,8 @@ function App() {
         <Container bg='' mt='9' maxW='container.2xl'>
           <Flex justify={'space-around'}>
             <Box bg='' ml='1' flex='1.2' mt='10'>
-              <Text fontSize='4xl' as='b'>Just some words</Text>
-              <Text fontSize='6xl'>something else here</Text>
+              <Text fontSize='4xl' as='b'>Just some words {userName}</Text>
+              <Text fontSize='6xl'>something else here </Text>
             </Box>
             <Box bg='' ml='' flex='1'>
               <Image src={img} loading='lazy' className='main-img' />
@@ -64,7 +70,7 @@ function App() {
               {mainCard.map((card, index) => (
                 <Box mr={5} bg="white" maxW="320px" borderWidth="1px" borderRadius="lg" overflow="hidden" boxShadow="md" p={4} position="relative" _hover={{ '.button': { opacity: 1 } }} zIndex={0}>
                   {/* <Text mt={2}>Content for Card 1</Text> */}
-                  <Image src={card.img} />
+                  <Image src={card.img} height={'130px'} />
                   <Link to={card.link}>
                     <Button
                       className="button "

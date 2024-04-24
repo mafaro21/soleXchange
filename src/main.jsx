@@ -4,6 +4,8 @@ import App from './App.jsx'
 import './index.css'
 import { ChakraProvider } from '@chakra-ui/react'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Provider } from 'react-redux'
+import { store } from './state/Store.js'
 import Auth from './pages/Auth.jsx'
 import Category from './pages/Category.jsx'
 import Admin from './admin/Admin.jsx'
@@ -36,7 +38,9 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ChakraProvider>
-      <RouterProvider router={router} />
+      <Provider store={store}>
+        <RouterProvider router={router} />
+      </Provider>
     </ChakraProvider>
   </React.StrictMode>,
 )

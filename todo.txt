@@ -1,10 +1,12 @@
-create proper tables
-redux
+-----TODO---------
 encrypt pass
 contains for search
+install jwt 
+graphql??
 
 --done--
-login/signup
-user table
-added nodemon
-send data 
+installed bycrypt, redux toolkit
+created full erd
+created tables(roles,user,brand,product,category)
+cleaned backend code and added routes
+redux config and initial use for login/signup 
