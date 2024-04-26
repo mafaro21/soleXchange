@@ -4,9 +4,6 @@ contains for search
 install jwt 
 graphql??
 
---done--
-installed bycrypt, redux toolkit
-created full erd
-created tables(roles,user,brand,product,category)
-cleaned backend code and added routes
-redux config and initial use for login/signup 
+--done---
+password hashing with bycrypt for both signup & login
+last login date updates 

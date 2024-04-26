@@ -40,22 +40,16 @@ export default function Login() {
         }
 
         if (Validation()) {
+            // console.log(loginData)
             axios.post('http://localhost:8888/auth/login', loginData)
                 .then((res) => {
-                    // setResponse(res.data.name)
-                    const api = res.data[0].name
-                    // console.log(api)
-                    dispatch(
-                        setLogin({
-                            isLoggedIn: true,
-                            name: api,
-                        })
-                    )
+                    console.log(res.data)
+                    const id = res.data
 
                     if (res.data.length === 0) {
                         toast({
                             title: "User does not exist",
-                            description: response,
+                            description: "Try again",
                             status: "error",
                             duration: 4000,
                             isClosable: true,
@@ -72,20 +66,27 @@ export default function Login() {
                         });
 
                         // add last login date 
-                        axios.put('http://localhost:8888/auth/login/date')
+                        axios.put('http://localhost:8888/auth/login/date', id)
                             .then((res) => {
                                 console.log(res.data)
                             })
                             .catch((err) => {
                                 console.log(err)
                             })
+
+                        dispatch(
+                            setLogin({
+                                isLoggedIn: true,
+                                name: name,
+                            })
+                        )
                         navigate('/')
                     }
 
 
                 })
                 .catch((err) => {
-                    console.log(err.data)
+                    console.log(err)
                     setErrorFromDB(true)
                     toast({
                         title: "Error",
