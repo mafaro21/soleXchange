@@ -18,7 +18,7 @@ export const authSlice = createSlice({
 
         setLogout: (state, action) => {
             state.isLoggedIn = false
-            state.name = null
+            state.name = ' '
         }
     }
 })

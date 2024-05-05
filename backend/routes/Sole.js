@@ -11,7 +11,7 @@ router.post('/add', async (req, res) => {
 
     const added = new Date()
 
-    // console.log(req.body)
+    console.log(req.body)
 
     try {
         const data = await pool.query('INSERT INTO shoes (name, brand, price, gender, added) VALUES ($1, $2, $3, $4, $5)', [name, brand, price, gender, added])
@@ -33,7 +33,7 @@ router.get('/search', async (req, res) => {
     console.log(req.body)
 
     try {
-        const data = await pool.query(`SELECT * FROM shoes WHERE CONTAINS ($1)`, ['Ni'])
+        const data = await pool.query('SELECT * FROM shoes WHERE LIKE $1', [`%${search}%`])
         res.send(data.rows)
         console.log(data.rows)
 

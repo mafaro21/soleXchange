@@ -1,14 +1,31 @@
 import React from 'react'
 import '../App.css'
-import { Box, Flex, HStack, Image, MenuButton, Spacer, Text, Avatar } from '@chakra-ui/react'
+import { Box, Flex, HStack, Image, MenuButton, Spacer, Text, Avatar, MenuDivider, Menu, MenuList, MenuItem, useToast } from '@chakra-ui/react'
 import { HamburgerIcon } from '@chakra-ui/icons'
 import { Link } from 'react-router-dom'
 import logo from '../img/Asset 4.png'
 import logo1 from '../img/Asset 6.png'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setLogout } from '../state/AuthSlice.js'
 
 export default function Navbar() {
+    const dispatch = useDispatch()
+    const toast = useToast
     const isAuth = useSelector((state) => state.auth.isLoggedIn)
+
+    const handleLogout = () => {
+        dispatch(
+            setLogout()
+        )
+        toast({
+            title: "You have logged out",
+            description: "See you again!",
+            status: "info",
+            duration: 4000,
+            isClosable: true,
+            position: "top-right",
+        });
+    }
 
     return (
         <>
@@ -43,10 +60,21 @@ export default function Navbar() {
                         <Link to={'/category'}>Category</Link>
                         <Box>Contact Us</Box>
                         {isAuth ?
-                            <Avatar bg='teal.500' />
+
+                            <Menu>
+                                <MenuButton>
+                                    <Avatar bg='teal.500' />
+                                </MenuButton>
+                                <MenuList>
+                                    <MenuItem>My Account</MenuItem>
+                                    <MenuItem>Edit Profile </MenuItem>
+                                    <MenuDivider />
+                                    <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                                </MenuList>
+                            </Menu>
                             :
                             <Box>
-                                <Link to="/auth">Login | Signup</Link>
+                                <Link to="/auth" >Login | Signup</Link>
                             </Box>
                         }
 

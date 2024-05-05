@@ -1,9 +1,8 @@
 -----TODO---------
-encrypt pass
 contains for search
 install jwt 
 graphql??
 
 --done---
-password hashing with bycrypt for both signup & login
-last login date updates 
+redux with persist
+logout
