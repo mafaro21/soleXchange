@@ -1,7 +1,4 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
 import { Box, Center, Container, Flex, HStack, Image, MenuButton, Spacer, Text, Button, SimpleGrid } from '@chakra-ui/react'
 import { HamburgerIcon, ChevronRightIcon } from '@chakra-ui/icons'
 import Navbar from './components/Navbar'
@@ -53,8 +50,8 @@ function App() {
         <Container bg='' mt='9' maxW='container.2xl'>
           <Flex justify={'space-around'}>
             <Box bg='' ml='1' flex='1.2' mt='10'>
-              <Text fontSize='4xl' as='b'>Just some words {userName}</Text>
-              <Text fontSize='6xl'>something else here </Text>
+              <Text fontSize='4xl' as='b'>Not selling souls</Text>
+              <Text fontSize='6xl'>Just premium quality soles</Text>
             </Box>
             <Box bg='' ml='' flex='1'>
               <Image src={img} loading='lazy' className='main-img' />

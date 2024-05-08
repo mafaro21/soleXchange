@@ -13,22 +13,22 @@ export default function Add() {
     const toast = useToast()
 
     const [name, setName] = useState('')
-    const [brand, setBrand] = useState('')
+    const [description, setDescription] = useState('')
     const [price, setPrice] = useState('')
     const [gender, setGender] = useState('')
 
     const addShoe = [
-        { data: 'Name', place: 'Enter the Name', type: 'name', info: (e) => setName(e.target.value) },
-        { data: 'Brand', place: 'Enter the Brand', type: 'name', info: (e) => setBrand(e.target.value) },
-        { data: 'Price($)', place: 'Enter the Price', type: 'name', info: (e) => setPrice(e.target.value) },
-        { data: 'Gender', place: 'Enter the Gender', type: 'img', info: (e) => setGender(e.target.value) },
+        { data: 'Shoe Name', place: 'Enter the Name', type: 'name', info: (e) => setName(e.target.value) },
+        { data: 'Description', place: 'Enter the Description', type: 'name', info: (e) => setDescription(e.target.value) },
+        { data: 'Price ($)', place: 'Enter the Price', type: 'name', info: (e) => setPrice(e.target.value) },
+        // { data: 'Gender', place: 'Enter the Gender', type: 'img', info: (e) => setGender(e.target.value) },
         // { data: 'Image', place: 'Enter the Name', type: 'name' },
     ]
 
     const handleAdd = () => {
         const add = {
             name: name,
-            brand: brand,
+            description: description,
             price: price,
             gender: gender
         }
@@ -46,7 +46,7 @@ export default function Add() {
                     position: "top-right",
                 });
 
-                // setName && setBrand && setPrice && setGender === ''
+                // setName && setdescription && setPrice && setGender === ''
             })
             .catch((err) => {
                 console.log(err)
@@ -60,30 +60,33 @@ export default function Add() {
                 });
             })
     }
+
     return (
         <>
-            <Box bg={'#25293a'} p={7} borderRadius={'12px'}>
-                <Text textAlign={'center'}>Add a new shoe</Text>
+            <Box mt={3} p={7} borderRadius={'12px'} style={{ border: '2px solid #9B3922' }}>
+                <Text fontSize={'lg'} textAlign={'center'}>Add a new shoe</Text>
                 <VStack spacing={4} mt='' p='9'>
                     {/* {errorMessage} */}
                     {addShoe.map((add, index) =>
 
                         <FormControl>
                             <Flex>
-                                <FormLabel mt={2}>{add.data} </FormLabel>
+                                <FormLabel mt={2} mr={8}>{add.data} </FormLabel>
                                 <Input type={add.type}
                                     placeholder={add.place}
                                     ml={6}
+                                    pl={4}
                                     onChange={add.info}
                                     variant={'flushed'}
                                     isRequired={'true'}
-                                // focusBorderColor='#e66063'
+                                    focusBorderColor='black'
+                                    width={'80%'}
                                 // isInvalid={errorDiv ? 'red' : ''}
                                 />
                             </Flex>
                         </FormControl>
                     )}
-                    <Button bg='#e66063' mt='3' onClick={handleAdd}>Add Shoe</Button>
+                    <Button bg='#F2613F' mt='3' onClick={handleAdd}>Add Shoe</Button>
                 </VStack>
             </Box>
         </>

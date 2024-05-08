@@ -6,7 +6,7 @@ import AdminSidebar from './AdminSidebar'
 export default function Admin() {
     return (
         <>
-            <Box bg={'#25292a'} color={'white'}>
+            <Box bg={'#481E14'} color={'white'}>
                 <Flex h="100vh">
                     {/* Sidebar */}
                     <AdminSidebar />

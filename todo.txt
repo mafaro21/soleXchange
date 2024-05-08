@@ -4,5 +4,5 @@ install jwt
 graphql??
 
 --done---
-redux with persist
-logout
+adding shoes to db
+admin colors

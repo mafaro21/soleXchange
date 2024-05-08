@@ -4,17 +4,17 @@ import { useLocation, Link } from 'react-router-dom'
 import { ArrowRightIcon } from '@chakra-ui/icons'
 
 export default function AdminSidebar() {
-    location = useLocation
+    let location = useLocation()
     const path = location.pathname
     // console.log(path)
     return (
         <>
-            <Box w="260px" bg="gray.800" color="white" p="6" flexDirection="column">
+            <Box w="260px" bg={'black'} color="white" p="6" flexDirection="column">
                 <Flex flexDirection="column">
                     {path === '/admin' ?
                         <Link to="/admin">
                             <Flex>
-                                <ArrowRightIcon mt={1} ml={1} color={'#e66063'} />
+                                <ArrowRightIcon mt={1} ml={1} color={'#F2613F'} />
                                 <Heading size="md" mb="4" ml={2}>Dashboard</Heading>
 
                             </Flex>
@@ -27,7 +27,7 @@ export default function AdminSidebar() {
 
                     {path === '/admin/product' ?
                         <Flex>
-                            <ArrowRightIcon mt={1} ml={1} color={'#e66063'} />
+                            <ArrowRightIcon mt={1} ml={1} color={'#F2613F'} />
                             <Box variant="link" color="white" mb="4" ml={2} as='b'>Product</Box>
 
                         </Flex>

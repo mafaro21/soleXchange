@@ -58,7 +58,7 @@ export default function Navbar() {
                     <HStack spacing={10}>
                         {/* <Box>Home</Box> */}
                         <Link to={'/category'}>Category</Link>
-                        <Box>Contact Us</Box>
+                        <Link to={'/admin'}>Contact Us</Link>
                         {isAuth ?
 
                             <Menu>

@@ -15,16 +15,23 @@ export default function Remove() {
 
     return (
         <>
-            <Box bg={'black'} p={7}>
-                <Text textAlign={'center'}>Delete shoe </Text>
-                <Input type='name'
-                    placeholder='search shoe'
-                    ml={6}
-                    mt={6}
-                    variant={'flushed'}
-                // onChange={(e) => setName(e.target.value)}
-                // isInvalid={errorDiv ? 'red' : ''}
-                />
+            <Box mt={3} p={7} borderRadius={'12px'} style={{ border: '2px solid #9B3922' }}>
+                <Text fontSize={'lg'} textAlign={'center'}>Delete shoe </Text>
+                <Flex>
+                    <Input type='name'
+                        placeholder='search shoe'
+                        mr={6}
+                        ml={6}
+                        mt={6}
+                        pl={4}
+                        variant={'flushed'}
+                        focusBorderColor='black'
+                    // onChange={(e) => setName(e.target.value)}
+                    // isInvalid={errorDiv ? 'red' : ''}
+                    />
+                    <Button bg='#F2613F' mt='6'>Search Shoe</Button>
+                </Flex>
+
             </Box>
         </>
     )

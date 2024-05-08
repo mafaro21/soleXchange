@@ -7,14 +7,14 @@ const pool = require('../database/connect')
 router.post('/add', async (req, res) => {
     if (!req) { return res.status(400) }
 
-    const { name, brand, price, gender } = req.body
+    const { name, description, price } = req.body
 
     const added = new Date()
 
     console.log(req.body)
 
     try {
-        const data = await pool.query('INSERT INTO shoes (name, brand, price, gender, added) VALUES ($1, $2, $3, $4, $5)', [name, brand, price, gender, added])
+        const data = await pool.query('INSERT INTO shoes (shoes_name,description, price, date_created) VALUES ($1, $2, $3, $4)', [name, description, price, added])
         res.send(data.rows)
         // console.log(data.rows)
     } catch (err) {
@@ -28,7 +28,7 @@ router.get('/search', async (req, res) => {
     if (!req) { return res.status(400) }
 
     // const search = req.body
-    const search = 'Nike'
+    const search = 'nike'
 
     console.log(req.body)
 

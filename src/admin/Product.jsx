@@ -17,7 +17,7 @@ export default function Product() {
 
     return (
         <>
-            <Box bg={'#25292a'} color={'white'}>
+            <Box bg={'#481E14'} color={'white'}>
                 <Flex h="100vh">
 
                     <AdminSidebar />
@@ -25,7 +25,7 @@ export default function Product() {
                         {/* add container */}
                         <Flex w='100%' p={8} justifyContent={'space-evenly'}>
                             <Box
-                                border={view === 'add' ? '2px solid #e66063' : '2px solid grey'}
+                                border={view === 'add' ? '2px solid #F2613F' : '3px solid black'}
                                 w='30%'
                                 p='4'
                                 style={{ borderRadius: '16px' }}
@@ -33,32 +33,34 @@ export default function Product() {
                                 fontWeight={'bold'}
                                 fontSize={'17px'}
                                 onClick={() => setView('add')}
-                            // _hover={}
+                                _hover={{ cursor: 'pointer' }}
                             >
                                 Add Product
                             </Box>
 
                             <Box
-                                border={view === 'edit' ? '2px solid #e66063' : '2px solid grey'}
+                                border={view === 'edit' ? '2px solid #F2613F' : '3px solid black'}
                                 w='30%'
                                 p='4'
                                 style={{ borderRadius: '16px' }}
                                 textAlign={'center'}
                                 fontWeight={'bold'}
                                 fontSize={'17px'}
-                                onClick={() => setView('edit')}>
+                                onClick={() => setView('edit')}
+                                _hover={{ cursor: 'pointer' }}>
                                 Edit Product
                             </Box>
 
                             <Box
-                                border={view === 'remove' ? '2px solid #e66063' : '2px solid grey'}
+                                border={view === 'remove' ? '2px solid #F2613F' : '3px solid black'}
                                 w='30%'
                                 p='4'
                                 style={{ borderRadius: '16px' }}
                                 textAlign={'center'}
                                 fontWeight={'bold'}
                                 fontSize={'17px'}
-                                onClick={() => setView('remove')}>
+                                onClick={() => setView('remove')}
+                                _hover={{ cursor: 'pointer' }}>
                                 Remove Product
                             </Box>
                         </Flex>

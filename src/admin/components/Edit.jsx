@@ -47,18 +47,21 @@ export default function Edit() {
     }
     return (
         <>
-            <Box bg={'black'} p={7}>
-                <Text textAlign={'center'}>Edit shoe details</Text>
+            <Box mt={3} p={7} borderRadius={'12px'} style={{ border: '2px solid #9B3922' }}>
+                <Text fontSize={'lg'} textAlign={'center'}>Edit shoe details</Text>
                 <Flex>
                     <Input type='name'
                         placeholder='search shoe'
                         ml={6}
+                        pl={4}
+                        mr={6}
                         mt={6}
                         onChange={(e) => setSearch(e.target.value)}
                         variant={'flushed'}
+                        focusBorderColor='black'
                     // isInvalid={errorDiv ? 'red' : ''}
                     />
-                    <Button bg='#e66063' mt='6' onClick={handleSearch}>Search Shoe</Button>
+                    <Button bg='#F2613F' mt='6' onClick={handleSearch}>Search Shoe</Button>
 
                 </Flex>
             </Box>
