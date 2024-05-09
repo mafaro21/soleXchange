@@ -27,13 +27,10 @@ router.post('/add', async (req, res) => {
 router.get('/search', async (req, res) => {
     if (!req) { return res.status(400) }
 
-    // const search = req.body
-    const search = 'nike'
-
-    console.log(req.body)
+    const { q } = req.query
 
     try {
-        const data = await pool.query('SELECT * FROM shoes WHERE LIKE $1', [`%${search}%`])
+        const data = await pool.query("SELECT * FROM shoes WHERE shoes_name || ' ' || description LIKE $1", [`%${q}%`])
         res.send(data.rows)
         console.log(data.rows)
 

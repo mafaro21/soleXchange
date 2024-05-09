@@ -4,7 +4,15 @@ import {
     Input,
     Center,
     VStack,
-    useToast
+    useToast, Table,
+    Thead,
+    Tbody,
+    Tfoot,
+    Tr,
+    Th,
+    Td,
+    TableCaption,
+    TableContainer,
 } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import axios from 'axios'
@@ -14,29 +22,19 @@ export default function Edit() {
     const toast = useToast()
 
     const [search, setSearch] = useState('')
+    const [dbData, setdbData] = useState('')
 
     const handleSearch = () => {
-        const searchInfo = {
-            search: search
-        }
 
-        axios.get('http://localhost:8888/sole/search', search)
+        axios.get(`http://localhost:8888/sole/search/?q=${search}`)
             .then((res) => {
-                console.log(search)
+                setdbData(res.data)
                 console.log(res.data)
-                toast({
-                    title: "Shoe added",
-                    description: "You've added a new shoe",
-                    status: "info",
-                    duration: 4000,
-                    isClosable: true,
-                    position: "top-right",
-                });
             })
             .catch((err) => {
                 console.log(err.data)
                 toast({
-                    title: "Shoe added",
+                    title: "Search Error",
                     description: "You've added a new shoe",
                     status: "error",
                     duration: 4000,
@@ -65,6 +63,30 @@ export default function Edit() {
 
                 </Flex>
             </Box>
+
+
+            <TableContainer mt={8}>
+                <Table colorScheme='teal'>
+                    <Thead>
+                        <Tr>
+                            <Th>Shoe Name</Th>
+                            <Th>Description</Th>
+                            <Th isNumeric>Price</Th>
+                        </Tr>
+                    </Thead>
+                    <Tbody>
+                        {dbData.map(data => (
+                            <Tr>
+                                <Td>{data.shoes_id}</Td>
+                                <Td>{data.description}</Td>
+                                <Td isNumeric>{data.price}</Td>
+                            </Tr>
+                        ))}
+                    </Tbody>
+                </Table>
+            </TableContainer>
+
+
 
         </>
     )
