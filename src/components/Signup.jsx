@@ -113,44 +113,46 @@ export default function Signup() {
 
     return (
         <>
-            <VStack spacing={4} mt='' p='9'>
-                {errorMessage}
-                <Flex>
-                    <FormControl flex="1">
-                        <FormLabel>Name</FormLabel>
-                        <Input type="text"
-                            placeholder="Enter your name"
-                            onChange={(e) => setName(e.target.value)}
+            <form onSubmit={handleSubmit}>
+                <VStack spacing={4} mt='' p='9'>
+                    {errorMessage}
+                    <Flex>
+                        <FormControl flex="1">
+                            <FormLabel>Name</FormLabel>
+                            <Input type="text"
+                                placeholder="Enter your name"
+                                onChange={(e) => setName(e.target.value)}
+                                isInvalid={errorDiv ? 'red' : ''}
+                                required />
+                        </FormControl>
+                        <FormControl flex="1.3" ml={4}>
+                            <FormLabel>Email</FormLabel>
+                            <Input type="email"
+                                placeholder="Enter your email"
+                                onChange={(e) => setEmail(e.target.value)}
+                                isInvalid={errorDiv ? 'red' : ''}
+                                required />
+                        </FormControl>
+                    </Flex>
+                    <FormControl>
+                        <FormLabel>Password</FormLabel>
+                        <Input type="password"
+                            placeholder="Enter your password"
+                            onChange={(e) => setPassword(e.target.value)}
                             isInvalid={errorDiv ? 'red' : ''}
                             required />
                     </FormControl>
-                    <FormControl flex="1.3" ml={4}>
-                        <FormLabel>Email</FormLabel>
-                        <Input type="email"
-                            placeholder="Enter your email"
-                            onChange={(e) => setEmail(e.target.value)}
+                    <FormControl>
+                        <FormLabel>Confirm Password</FormLabel>
+                        <Input type="password"
+                            placeholder="Confirm your password"
+                            onChange={(e) => setConfirm(e.target.value)}
                             isInvalid={errorDiv ? 'red' : ''}
                             required />
                     </FormControl>
-                </Flex>
-                <FormControl>
-                    <FormLabel>Password</FormLabel>
-                    <Input type="password"
-                        placeholder="Enter your password"
-                        onChange={(e) => setPassword(e.target.value)}
-                        isInvalid={errorDiv ? 'red' : ''}
-                        required />
-                </FormControl>
-                <FormControl>
-                    <FormLabel>Confirm Password</FormLabel>
-                    <Input type="password"
-                        placeholder="Confirm your password"
-                        onChange={(e) => setConfirm(e.target.value)}
-                        isInvalid={errorDiv ? 'red' : ''}
-                        required />
-                </FormControl>
-                <Button bg='#e66063' mt='3' onClick={handleSubmit}>Signup</Button>
-            </VStack >
+                    <Button bg='#e66063' mt='3' onClick={handleSubmit} type='submit'>Signup</Button>
+                </VStack >
+            </form>
         </>
     )
 }

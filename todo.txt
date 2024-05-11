@@ -1,8 +1,9 @@
 -----TODO---------
-contains for search
 install jwt 
 graphql??
 
 --done---
-adding shoes to db
-admin colors
+fixed search to render after getting data
+fixed form buttons to work on submit
+state for admin product page
+search for admin remove page

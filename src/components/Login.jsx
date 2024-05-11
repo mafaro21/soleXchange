@@ -129,26 +129,28 @@ export default function Login() {
 
     return (
         <>
-            <VStack spacing={4} mt='' p='9'>
-                {errorMessage}
-                <FormControl>
-                    <FormLabel>Name {userName}</FormLabel>
-                    <Input type="name"
-                        placeholder="Enter your name"
-                        onChange={(e) => setName(e.target.value)}
-                        isInvalid={errorDiv ? 'red' : '' || errorFromDB == true ? 'red' : ''}
-                    />
-                </FormControl>
-                <FormControl>
-                    <FormLabel>Password</FormLabel>
-                    <Input type="password"
-                        placeholder="Enter your password"
-                        onChange={(e) => setPassword(e.target.value)}
-                        isInvalid={errorDiv ? 'red' : '' || errorFromDB == true ? 'red' : ''}
-                    />
-                </FormControl>
-                <Button bg='#e66063' mt='3' onClick={handleSubmit}>Login</Button>
-            </VStack>
+            <form onSubmit={handleSubmit}>
+                <VStack spacing={4} mt='' p='9'>
+                    {errorMessage}
+                    <FormControl>
+                        <FormLabel>Name {userName}</FormLabel>
+                        <Input type="name"
+                            placeholder="Enter your name"
+                            onChange={(e) => setName(e.target.value)}
+                            isInvalid={errorDiv ? 'red' : '' || errorFromDB == true ? 'red' : ''}
+                        />
+                    </FormControl>
+                    <FormControl>
+                        <FormLabel>Password</FormLabel>
+                        <Input type="password"
+                            placeholder="Enter your password"
+                            onChange={(e) => setPassword(e.target.value)}
+                            isInvalid={errorDiv ? 'red' : '' || errorFromDB == true ? 'red' : ''}
+                        />
+                    </FormControl>
+                    <Button bg='#e66063' mt='3' onClick={handleSubmit} type='submit'>Login</Button>
+                </VStack>
+            </form>
         </>
     )
 }

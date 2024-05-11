@@ -6,14 +6,16 @@ import React, { useState } from 'react'
 import AdminSidebar from './AdminSidebar'
 import Add from './components/Add'
 import Edit from './components/Edit'
-// import axios from 'axios'
 import Remove from './components/Remove'
-import { PointLight } from 'three'
+import { useDispatch, useSelector } from 'react-redux'
+import { setPage } from '../state/ProductPage'
 
 export default function Product() {
     const toast = useToast()
     const [view, setView] = useState('')
+    const dispatch = useDispatch()
 
+    const page = useSelector((state) => state.page.page)
 
     return (
         <>
@@ -25,49 +27,49 @@ export default function Product() {
                         {/* add container */}
                         <Flex w='100%' p={8} justifyContent={'space-evenly'}>
                             <Box
-                                border={view === 'add' ? '2px solid #F2613F' : '3px solid black'}
+                                border={page === 'add' ? '2px solid #F2613F' : '3px solid black'}
                                 w='30%'
                                 p='4'
                                 style={{ borderRadius: '16px' }}
                                 textAlign={'center'}
                                 fontWeight={'bold'}
                                 fontSize={'17px'}
-                                onClick={() => setView('add')}
+                                onClick={() => dispatch(setPage({ page: 'add' }))}
                                 _hover={{ cursor: 'pointer' }}
                             >
                                 Add Product
                             </Box>
 
                             <Box
-                                border={view === 'edit' ? '2px solid #F2613F' : '3px solid black'}
+                                border={page === 'edit' ? '2px solid #F2613F' : '3px solid black'}
                                 w='30%'
                                 p='4'
                                 style={{ borderRadius: '16px' }}
                                 textAlign={'center'}
                                 fontWeight={'bold'}
                                 fontSize={'17px'}
-                                onClick={() => setView('edit')}
+                                onClick={() => dispatch(setPage({ page: 'edit' }))}
                                 _hover={{ cursor: 'pointer' }}>
                                 Edit Product
                             </Box>
 
                             <Box
-                                border={view === 'remove' ? '2px solid #F2613F' : '3px solid black'}
+                                border={page === 'remove' ? '2px solid #F2613F' : '3px solid black'}
                                 w='30%'
                                 p='4'
                                 style={{ borderRadius: '16px' }}
                                 textAlign={'center'}
                                 fontWeight={'bold'}
                                 fontSize={'17px'}
-                                onClick={() => setView('remove')}
+                                onClick={() => dispatch(setPage({ page: 'remove' }))}
                                 _hover={{ cursor: 'pointer' }}>
                                 Remove Product
                             </Box>
                         </Flex>
 
-                        {view === 'add' ? <Add /> : ''}
-                        {view === 'edit' ? <Edit /> : ''}
-                        {view === 'remove' ? <Remove /> : ''}
+                        {page === 'add' ? <Add /> : ''}
+                        {page === 'edit' ? <Edit /> : ''}
+                        {page === 'remove' ? <Remove /> : ''}
                     </Flex>
                 </Flex>
             </Box>

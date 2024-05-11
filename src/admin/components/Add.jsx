@@ -63,32 +63,34 @@ export default function Add() {
 
     return (
         <>
-            <Box mt={3} p={7} borderRadius={'12px'} style={{ border: '2px solid #9B3922' }}>
-                <Text fontSize={'lg'} textAlign={'center'}>Add a new shoe</Text>
-                <VStack spacing={4} mt='' p='9'>
-                    {/* {errorMessage} */}
-                    {addShoe.map((add, index) =>
+            <form onSubmit={handleAdd}>
+                <Box mt={3} p={7} borderRadius={'12px'} style={{ border: '2px solid #9B3922' }}>
+                    <Text fontSize={'lg'} textAlign={'center'}>Add a new shoe</Text>
+                    <VStack spacing={4} mt='' p='9'>
+                        {/* {errorMessage} */}
+                        {addShoe.map((add, index) =>
 
-                        <FormControl>
-                            <Flex>
-                                <FormLabel mt={2} mr={8}>{add.data} </FormLabel>
-                                <Input type={add.type}
-                                    placeholder={add.place}
-                                    ml={6}
-                                    pl={4}
-                                    onChange={add.info}
-                                    variant={'flushed'}
-                                    isRequired={'true'}
-                                    focusBorderColor='black'
-                                    width={'80%'}
-                                // isInvalid={errorDiv ? 'red' : ''}
-                                />
-                            </Flex>
-                        </FormControl>
-                    )}
-                    <Button bg='#F2613F' mt='3' onClick={handleAdd}>Add Shoe</Button>
-                </VStack>
-            </Box>
+                            <FormControl>
+                                <Flex>
+                                    <FormLabel mt={2} mr={8}>{add.data} </FormLabel>
+                                    <Input type={add.type}
+                                        placeholder={add.place}
+                                        ml={6}
+                                        pl={4}
+                                        onChange={add.info}
+                                        variant={'flushed'}
+                                        isRequired={'true'}
+                                        focusBorderColor='black'
+                                        width={'80%'}
+                                    // isInvalid={errorDiv ? 'red' : ''}
+                                    />
+                                </Flex>
+                            </FormControl>
+                        )}
+                        <Button bg='#F2613F' mt='3' onClick={handleAdd} type='submit'>Add Shoe</Button>
+                    </VStack>
+                </Box>
+            </form>
         </>
     )
 }
