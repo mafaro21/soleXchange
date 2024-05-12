@@ -12,6 +12,7 @@ export default function Navbar() {
     const dispatch = useDispatch()
     const toast = useToast
     const isAuth = useSelector((state) => state.auth.isLoggedIn)
+    const userName = useSelector((state) => state.auth.name)
 
     const handleLogout = () => {
         dispatch(
@@ -66,7 +67,7 @@ export default function Navbar() {
                                     <Avatar bg='teal.500' />
                                 </MenuButton>
                                 <MenuList>
-                                    <MenuItem>My Account</MenuItem>
+                                    <Link to={'/' + userName}><MenuItem>My Account</MenuItem></Link>
                                     <MenuItem>Edit Profile </MenuItem>
                                     <MenuDivider />
                                     <MenuItem onClick={handleLogout}>Logout</MenuItem>

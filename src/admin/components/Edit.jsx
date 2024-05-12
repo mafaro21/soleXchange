@@ -30,7 +30,8 @@ export default function Edit() {
     const [dbData, setdbData] = useState('')
     const [errData, seterrData] = useState('')
 
-    const handleSearch = () => {
+    const handleSearch = (e) => {
+        e.preventDefault()
 
         axios.get(`http://localhost:8888/sole/search/?q=${search}`)
             .then((res) => {

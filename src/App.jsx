@@ -27,10 +27,10 @@ function App() {
   // console.log(userName)
 
   const mainCard = [
-    { img: adidas, link: '/adidas' },
-    { img: nike, link: '/nike' },
-    { img: puma, link: '/puma' },
-    { img: vans, link: '/vans' },
+    { img: adidas, link: '/brand/adidas' },
+    { img: nike, link: '/brand/nike' },
+    { img: puma, link: '/brand/puma' },
+    { img: vans, link: '/brand/vans' },
   ]
 
   const rare = [

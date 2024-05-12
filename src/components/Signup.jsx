@@ -28,7 +28,8 @@ export default function Signup() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault()
         setErrorDiv(false)
         setErrorText('')
 

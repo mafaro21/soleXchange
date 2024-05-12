@@ -15,7 +15,8 @@ export default function Remove() {
     const [search, setSearch] = useState('')
     const [dbData, setdbData] = useState('')
 
-    const handleSearch = () => {
+    const handleSearch = (e) => {
+        e.preventDefault()
 
         axios.get(`http://localhost:8888/sole/search/?q=${search}`)
             .then((res) => {

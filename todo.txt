@@ -3,7 +3,7 @@ install jwt
 graphql??
 
 --done---
-fixed search to render after getting data
-fixed form buttons to work on submit
-state for admin product page
-search for admin remove page
+fixed login refresh when logging in
+myaccount page routing 
+branding routes to not confuse with users
+updated state for user login

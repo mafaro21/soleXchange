@@ -29,7 +29,8 @@ export default function Login() {
 
     const userName = useSelector((state) => state.auth.name)
 
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault()
         setErrorDiv(false)
         setErrorFromDB(false)
         setErrorText('')
@@ -78,6 +79,9 @@ export default function Login() {
                             setLogin({
                                 isLoggedIn: true,
                                 name: name,
+                                email: res.data[0].email,
+                                regDate: res.data[0].registration_date,
+                                lastLogin: res.data[0].last_login_date,
                             })
                         )
                         navigate('/')
@@ -133,7 +137,7 @@ export default function Login() {
                 <VStack spacing={4} mt='' p='9'>
                     {errorMessage}
                     <FormControl>
-                        <FormLabel>Name {userName}</FormLabel>
+                        <FormLabel>Name</FormLabel>
                         <Input type="name"
                             placeholder="Enter your name"
                             onChange={(e) => setName(e.target.value)}

@@ -12,6 +12,7 @@ import Auth from './pages/Auth.jsx'
 import Category from './pages/Category.jsx'
 import Admin from './admin/Admin.jsx'
 import Product from './admin/Product.jsx'
+import MyAccount from './pages/MyAccount.jsx'
 
 const router = createBrowserRouter([
   {
@@ -24,7 +25,7 @@ const router = createBrowserRouter([
     element: <Auth />,
   },
   {
-    path: "/:brand",
+    path: "/brand/:brand",
     element: <Category />,
   },
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
   {
     path: "/admin/product",
     element: <Product />,
+  },
+  {
+    path: "/:userName",
+    element: <MyAccount />,
   },
 ])
 
