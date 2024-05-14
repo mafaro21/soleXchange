@@ -9,9 +9,11 @@ app.use(cors())
 
 const authRoute = require('./routes/Auth.js')
 const soleRoute = require('./routes/Sole.js')
+const userRoute = require('./routes/User.js')
 
 app.use('/auth', authRoute)
 app.use('/sole', soleRoute)
+app.use('/user', userRoute)
 
 app.get('/', (req, res) => {
     res.send('its working')

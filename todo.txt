@@ -1,9 +1,7 @@
 -----TODO---------
 install jwt 
 graphql??
+skeleton
 
 --done---
-fixed login refresh when logging in
-myaccount page routing 
-branding routes to not confuse with users
-updated state for user login
+fetching user data for profile page

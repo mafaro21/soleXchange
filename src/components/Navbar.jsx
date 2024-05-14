@@ -64,10 +64,10 @@ export default function Navbar() {
 
                             <Menu>
                                 <MenuButton>
-                                    <Avatar bg='teal.500' />
+                                    <Avatar bg='teal.500' name={userName} />
                                 </MenuButton>
                                 <MenuList>
-                                    <Link to={'/' + userName}><MenuItem>My Account</MenuItem></Link>
+                                    <Link to={'/' + userName}><MenuItem>{userName + "'s"} Account</MenuItem></Link>
                                     <MenuItem>Edit Profile </MenuItem>
                                     <MenuDivider />
                                     <MenuItem onClick={handleLogout}>Logout</MenuItem>
