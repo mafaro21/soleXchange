@@ -13,6 +13,7 @@ import Category from './pages/Category.jsx'
 import Admin from './admin/Admin.jsx'
 import Product from './admin/Product.jsx'
 import MyAccount from './pages/MyAccount.jsx'
+import Error from './pages/404.jsx'
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,9 @@ const router = createBrowserRouter([
   },
   {
     path: "/:userName",
+    element: <MyAccount />,
+  },
+  {
     element: <MyAccount />,
   },
 ])
