@@ -19,7 +19,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    errorElement: <Error />,
+    // errorElement: <Error />,
   },
   {
     path: "/auth",
@@ -40,9 +40,11 @@ const router = createBrowserRouter([
   {
     path: "/:userName",
     element: <MyAccount />,
+    // errorElement: <Error />,
   },
   {
-    element: <MyAccount />,
+    path: '*',
+    element: <Error />,
   },
 ])
 
