@@ -14,12 +14,13 @@ import Admin from './admin/Admin.jsx'
 import Product from './admin/Product.jsx'
 import MyAccount from './pages/MyAccount.jsx'
 import Error from './pages/404.jsx'
+import Error500 from './pages/500.jsx'
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    // errorElement: <Error />,
+    errorElement: <Error />,
   },
   {
     path: "/auth",
@@ -43,9 +44,14 @@ const router = createBrowserRouter([
     // errorElement: <Error />,
   },
   {
-    path: '*',
+    path: '/404',
     element: <Error />,
   },
+  {
+    path: '/500',
+    element: <Error500 />,
+  },
+
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(

@@ -92,6 +92,8 @@ export default function Login() {
                 .catch((err) => {
                     console.log(err)
                     setErrorFromDB(true)
+                    navigate('/500')
+
                     toast({
                         title: "Error",
                         description: "Name or Password is incorrect",

@@ -31,11 +31,12 @@ export default function MyAccount() {
                 setRegDate(formattedDate)
             })
             .catch((err) => {
-                // if (err.response.status === 404) {
-                return navigate("*")
-                // return history.push('*')
-                // setNotFound(true)
-                // }
+                if (err.message = 'Network Error') {
+                    return navigate('/500')
+                } else if (err.response.status === 404) {
+                    return navigate("/404")
+                }
+
             })
     }, [username])
 

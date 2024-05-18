@@ -67,6 +67,8 @@ export default function Signup() {
                 .catch((err) => {
                     // setResponse(err.data)
                     console.log(err)
+                    navigate('/500')
+
                     toast({
                         title: "Error",
                         description: "error",
@@ -93,7 +95,7 @@ export default function Signup() {
             setErrorText('That can\'t be your name.... lol')
         } else if (password.length < 8) {
             setErrorDiv(true)
-            setErrorText('Password needs to be more that 8 characters')
+            setErrorText('Password needs to be more than 8 characters')
         } else if (!passPatt.test(password)) {
             setErrorDiv(true)
             setErrorText('Password is suspiscious')
