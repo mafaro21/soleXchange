@@ -93,15 +93,6 @@ export default function Login() {
                     console.log(err)
                     setErrorFromDB(true)
                     navigate('/500')
-
-                    toast({
-                        title: "Error",
-                        description: "Name or Password is incorrect",
-                        status: "error",
-                        duration: 4000,
-                        isClosable: true,
-                        position: "top-right",
-                    });
                 })
         }
     }

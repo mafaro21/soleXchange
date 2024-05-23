@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Navbar from '../components/Navbar'
-import { Box, Container, VStack } from '@chakra-ui/react'
+import { Box, Button, Container, Flex, VStack, useToast } from '@chakra-ui/react'
 import { useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { useNavigate, useParams, redirect } from 'react-router-dom'
@@ -14,6 +14,9 @@ export default function MyAccount() {
     const user = useParams()
     const username = user.userName
     const navigate = useNavigate()
+    const toast = useToast()
+
+    const loggedInName = useSelector((state) => state.auth.name)
 
 
     // const Error = () => {
@@ -31,9 +34,17 @@ export default function MyAccount() {
                 setRegDate(formattedDate)
             })
             .catch((err) => {
-                if (err.message = 'Network Error') {
+                if (err.message === 'Network Error') {
                     return navigate('/500')
                 } else if (err.response.status === 404) {
+                    toast({
+                        title: "User does not exist",
+                        description: "Try again",
+                        status: "error",
+                        duration: 4000,
+                        isClosable: true,
+                        position: "top-right",
+                    });
                     return navigate("/404")
                 }
 
@@ -46,19 +57,24 @@ export default function MyAccount() {
             {/* {notFound && <Redirect/>} */}
             <Navbar />
             <Box p='9' mt='7' color='white'>
-                <Container maxW={'2xl'} bg={'black'} >
+                <Container maxW={'2xl'} bg={'black'}>
 
-                    <VStack p={8} spacing={2} align={'left'}>
-                        <Box>
-                            {data.user_name}
-                        </Box>
-                        <Box>
-                            {data.email}
-                        </Box>
-                        <Box>
-                            Date Joined: {regDate}
-                        </Box>
-                    </VStack>
+                    <Flex justifyContent={'space-between'}>
+                        <VStack p={6} spacing={2} align={'left'}>
+                            <Box>
+                                {data.user_name}
+                            </Box>
+                            <Box>
+                                {data.email}
+                            </Box>
+                            <Box>
+                                Joined: {regDate}
+                            </Box>
+                        </VStack>
+
+                        {username === loggedInName ? <Button bg={'#e66063'} mt={12}>Edit Profile </Button> : ''}
+                    </Flex>
+
                 </Container>
             </Box>
         </>
